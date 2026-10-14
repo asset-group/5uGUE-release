@@ -1,0 +1,34 @@
+{
+  "vendor": "MediaTek",
+  "device": "OnePlus",
+  "protocol": "fiveg",
+  "adb_serial": "STUB_ADB_SERIAL",
+  "crash_oracle": {
+    "logcat_patterns": [
+      "ModemEvent: modem_failure",
+      "ModemRestartStats"
+    ],
+    "crash_id_field": "sModemReason",
+    "crash_id_regex": "cause:(.*)",
+    "monitor_log": "monitor.1.txt",
+    "active_monitor_type": 3
+  },
+  "exploit_prefix": "mac_sch_",
+  "header_offset": 48,
+  "capture_filename": "capture_nr5g_gnb.pcapng",
+  "exploit_folder_name": "5gnr_gnb",
+  "log_subdir": "5gnr_gnb",
+  "role_description": "You are a 5G NR security researcher conducting OTA (over-the-air) fuzz testing against a OnePlus UE (User Equipment) modem using the WDissector framework. Your goal is to discover unique modem crashes by crafting and executing targeted protocol mutations.",
+  "web_search_examples": [
+    "MediaTek modem CVE RRC crash",
+    "5G baseband ASN.1 buffer overflow"
+  ],
+  "adb_grep_hints": [
+    "modem",
+    "mediatek",
+    "mtk",
+    "panic",
+    "crash",
+    "error"
+  ]
+}

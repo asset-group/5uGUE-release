@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuzz Run Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header id="topbar">
+    <div class="topbar-left" id="logo-home" style="cursor:pointer">
+      <svg class="logo-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <span class="logo-text">Fuzz Dashboard</span>
+    </div>
+    <div class="topbar-center">
+      <div class="run-combo">
+        <input id="run-input" type="text" placeholder="Select or search runs..." autocomplete="off">
+        <svg class="run-combo-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        <div id="run-dropdown" class="run-dropdown hidden"></div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span id="session-id" class="session-label"></span>
+    </div>
+  </header>
+
+  <div id="app-shell">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <a class="nav-item active" data-tab="overview">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Overview</span>
+      </a>
+      <a class="nav-item" data-tab="agent">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <span>Agent</span>
+      </a>
+      <a class="nav-item" data-tab="tests">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <span>Tests</span>
+      </a>
+      <a class="nav-item" data-tab="intel">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        <span>Intel</span>
+      </a>
+      <a class="nav-item" data-tab="reports">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3z"/><path d="M3 10h18v4H3z"/><path d="M3 17h18v4H3z"/></svg>
+        <span>Reports</span>
+      </a>
+      <a class="nav-item" data-tab="sweep">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 17l4-8 4 4 5-10"/></svg>
+        <span>Sweep</span>
+      </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="content">
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <p>Select a run to view its dashboard</p>
+      </div>
+
+      <!-- Loading -->
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Loading run data...</p>
+      </div>
+
+      <!-- Tab: Overview -->
+      <div id="tab-overview" class="tab-panel hidden">
+        <div class="panel-header">
+          <h2>Overview</h2>
+          <span id="run-timestamp" class="run-meta"></span>
+        </div>
+        <div id="hero-cards" class="hero-cards"></div>
+        <div class="chart-row">
+          <div class="panel full-width">
+            <div class="panel-title">Turn Activity</div>
+            <div id="turn-activity" class="turn-activity-strip"></div>
+            <div class="activity-legend" id="activity-legend"></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="panel full-width">
+            <div class="panel-title">Crash Discovery</div>
+            <div id="crash-chart" class="chart-box"></div>
+          </div>
+        </div>
+        <div id="at-a-glance" class="at-a-glance"></div>
+      </div>
+
+      <!-- Tab: Agent -->
+      <div id="tab-agent" class="tab-panel hidden">
+        <div class="panel-header"><h2>Agent Performance</h2></div>
+        <div class="chart-row">
+          <div class="panel full-width">
+            <div class="panel-title">Token Consumption</div>
+            <div id="token-chart" class="chart-box"></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="panel full-width">
+            <div class="panel-title">Tool Distribution</div>
+            <div id="tool-donut" class="chart-box"></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="panel full-width">
+            <div class="panel-title">Tool Activity per Turn</div>
+            <div id="tool-heatmap" class="chart-box"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Tests -->
+      <div id="tab-tests" class="tab-panel hidden">
+        <div class="panel-header"><h2>Test Results</h2></div>
+        <div id="test-summary-bar" class="test-summary-bar"></div>
+        <div class="crash-strings-row">
+          <div class="crash-strings-section">
+            <h3><span class="badge badge-publicly-known">Publicly Known</span> Unique Crash Strings <span id="publicly-known-count" class="crash-count"></span></h3>
+            <div id="publicly-known-crashes" class="crash-strings-list"></div>
+          </div>
+          <div class="crash-strings-section">
+            <h3><span class="badge badge-non-public">Non-Publicly Known</span> Unique Crash Strings <span id="non-publicly-known-count" class="crash-count"></span></h3>
+            <div id="non-publicly-known-crashes" class="crash-strings-list"></div>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div id="test-table-container" class="table-wrap"></div>
+        </div>
+      </div>
+
+      <!-- Tab: Intel -->
+      <div id="tab-intel" class="tab-panel hidden">
+        <div class="panel-header"><h2>Intelligence</h2></div>
+        <div class="intel-grid">
+          <div class="intel-section">
+            <h3>Findings</h3>
+            <div id="findings-container"></div>
+          </div>
+          <div class="intel-section">
+            <h3>Strategy</h3>
+            <div id="strategy-container" class="strategy-box">
+              <pre id="strategy-content"></pre>
+            </div>
+          </div>
+        </div>
+        <div class="intel-section" style="margin-top: 16px;">
+          <h3>Reasoning</h3>
+          <div id="reasoning-container"></div>
+        </div>
+      </div>
+
+      <!-- Tab: Reports -->
+      <div id="tab-reports" class="tab-panel hidden">
+        <div class="panel-header">
+          <h2>Reports</h2>
+          <div class="sweep-controls">
+            <select id="report-selector" class="sweep-select">
+              <option value="">Select a report...</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="reports-empty" class="no-data" style="min-height:200px">No report selected. Each report aggregates one multi-run eval CSV.</div>
+
+        <div id="reports-content" class="hidden">
+          <div id="reports-hero" class="hero-cards"></div>
+
+          <div class="chart-row">
+            <div class="panel full-width">
+              <div class="panel-title">Aggregates</div>
+              <div id="reports-aggregates" class="hero-cards"></div>
+            </div>
+          </div>
+
+          <div class="chart-row">
+            <div class="panel full-width">
+              <div class="panel-title">Crashes per Run</div>
+              <div id="reports-crashes-chart" class="chart-box"></div>
+            </div>
+          </div>
+
+          <div class="chart-row">
+            <div class="panel full-width">
+              <div class="panel-title">Research Quality Distribution</div>
+              <div id="reports-rq-chart" class="chart-box"></div>
+            </div>
+          </div>
+
+          <div class="chart-row">
+            <div class="panel full-width">
+              <div class="panel-title">Time to First Crash</div>
+              <div id="reports-ttfc-chart" class="chart-box"></div>
+            </div>
+          </div>
+
+          <div class="chart-row">
+            <div class="panel full-width">
+              <div class="panel-title">Tokens per Run</div>
+              <div id="reports-tokens-chart" class="chart-box"></div>
+            </div>
+          </div>
+
+          <div class="panel full-width">
+            <div class="panel-title">Per-Run Breakdown</div>
+            <div id="reports-table" class="table-wrap"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Sweep -->
+      <div id="tab-sweep" class="tab-panel hidden">
+        <div class="panel-header">
+          <h2>Brute-Force Sweep</h2>
+          <div class="sweep-controls">
+            <select id="sweep-selector" class="sweep-select">
+              <option value="">Select a sweep...</option>
+            </select>
+            <label class="sweep-auto-label"><input type="checkbox" id="sweep-auto-refresh" checked> Auto-refresh</label>
+          </div>
+        </div>
+
+        <div id="sweep-empty" class="no-data" style="min-height:200px">No sweep selected. Run <code>python -m sweep_scripts_202604.sweep --profile quick</code> to start.</div>
+
+        <div id="sweep-content" class="hidden">
+          <!-- Progress -->
+          <div class="panel full-width" style="margin-bottom:16px">
+            <div class="panel-title">Progress</div>
+            <div id="sweep-progress-bar-container" class="sweep-progress-bar-container">
+              <div id="sweep-progress-bar" class="sweep-progress-bar"></div>
+              <span id="sweep-progress-text" class="sweep-progress-text"></span>
+            </div>
+            <div id="sweep-stats" class="sweep-stats"></div>
+          </div>
+
+          <!-- Heatmaps -->
+          <div id="sweep-heatmaps" class="panel full-width" style="margin-bottom:16px">
+            <div class="panel-title">Results Heatmap</div>
+            <div id="sweep-heatmap-container"></div>
+          </div>
+
+          <!-- Crash list -->
+          <div class="panel full-width">
+            <div class="panel-title">Crashes Found (<span id="sweep-crash-count">0</span>)</div>
+            <div id="sweep-crash-table" class="table-wrap"></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

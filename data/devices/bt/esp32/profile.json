@@ -1,0 +1,25 @@
+{
+  "vendor": "Espressif",
+  "device": "esp32",
+  "protocol": "bt",
+  "header_offset": 0,
+  "capture_filename": "capture_bluetooth.pcapng",
+  "exploit_prefix": "",
+  "exploit_folder_name": "bluetooth",
+  "log_subdir": "Bluetooth",
+  "crash_oracle": {
+    "crash_patterns": [
+      "Bluetooth crash",
+      "hci error"
+    ],
+    "crash_id_field": "bt_crash",
+    "crash_id_regex": "crash:(.*)",
+    "monitor_log": "monitor.1.txt"
+  },
+  "role_description": "You are a Bluetooth security researcher conducting fuzz testing against an Espressif esp32 target device using the WDissector framework. Your goal is to discover unique Bluetooth stack crashes by crafting and executing targeted protocol mutations.",
+  "web_search_examples": [
+    "Bluetooth Classic CVE crash",
+    "Bluetooth baseband buffer overflow"
+  ],
+  "target_address": "24:0a:c4:61:1c:1a"
+}

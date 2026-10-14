@@ -1,0 +1,17 @@
+{
+  "description": "Ground truth eval targets (stub).",
+  "schema": {
+    "eval_id": "string",
+    "crash_name": "string",
+    "device": "string",
+    "target_urls": ["string"],
+    "raw_urls": ["string"],
+    "expected_extractions": {
+      "filter": "string",
+      "offsets": ["int"],
+      "values": ["string"]
+    },
+    "crash_signatures": ["string"]
+  },
+  "entries": []
+}

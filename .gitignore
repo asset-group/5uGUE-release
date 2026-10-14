@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Runtime artifacts
+logs/
+runtime_logs/
+cache/
+crashes.csv
+
+# Knowledge base sessions (regenerated per run)
+kb/
+
+# Editor / OS
+*.swp
+.DS_Store
+
+.coverage
+5g-papers-main/
+data/*
+!data/known_crash_signatures.json
+# !data/modems/
+!data/devices/
+secret_keys.py
+.venv/
+agent_generated_tests/
+agent_generated_crashes/
+reports/
+next-agent/
+dashboard/build/
+.codex
+exploratory_logs/
+sweep_logs
+.wrangler/
+scratchpad
+*.pcapng
+data/modems/mediatek_d9400/mediatek_d9400_testing_information_20260414.md
+paper_writeup_data/
+
+# VS Code configuration
+.vscode/

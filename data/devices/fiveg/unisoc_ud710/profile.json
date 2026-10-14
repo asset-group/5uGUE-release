@@ -1,0 +1,47 @@
+{
+  "vendor": "Unisoc",
+  "device": "Hisense F50+ (UD710 / Tiger T7510)",
+  "protocol": "fiveg",
+  "adb_serial": "STUB_ADB_SERIAL",
+  "crash_oracle": {
+    "logcat_patterns": [
+      "ModemAssertInfoActivity",
+      "modemAsserInfo",
+      "Modem Assert"
+    ],
+    "crash_id_field": "modemAsserInfo",
+    "crash_id_regex": "modemAsserInfo = (.+?) info=\\[",
+    "monitor_log": "monitor.1.txt",
+    "active_monitor_type": 3,
+    "adb_magic_words": [
+      "modemAsserInfo"
+    ]
+  },
+  "exploit_prefix": "mac_sch_",
+  "header_offset": 48,
+  "capture_filename": "capture_nr5g_gnb.pcapng",
+  "exploit_folder_name": "5gnr_gnb",
+  "log_subdir": "5gnr_gnb",
+  "role_description": "You are a 5G NR security researcher conducting OTA (over-the-air) fuzz testing against a Hisense F50+ UE with a Unisoc UD710 (Tiger T7510, udx710_modem, baseband W20.51.5_P14) modem. Your goal is to discover unique modem crashes by crafting and executing targeted protocol mutations using the WDissector framework.",
+  "web_search_examples": [
+    "Unisoc modem CVE RRC crash",
+    "5G baseband ASN.1 buffer overflow",
+    "Unisoc UD710 Tiger T7510 modem vulnerability",
+    "udx710 modem baseband crash",
+    "Unisoc Tiger 5G NR crash"
+  ],
+  "adb_grep_hints": [
+    "modem",
+    "unisoc",
+    "ud710",
+    "udx710",
+    "tiger",
+    "t7510",
+    "ModemAssertInfoActivity",
+    "modemAsserInfo",
+    "nrrc",
+    "panic",
+    "crash",
+    "assert"
+  ]
+}

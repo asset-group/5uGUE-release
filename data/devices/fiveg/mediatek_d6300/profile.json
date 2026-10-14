@@ -1,0 +1,38 @@
+{
+  "vendor": "MediaTek",
+  "device": "REDMI 15C 5G",
+  "protocol": "fiveg",
+  "adb_serial": "STUB_ADB_SERIAL",
+  "crash_oracle": {
+    "logcat_patterns": [
+      "ModemRestartStats"
+    ],
+    "crash_id_field": "MiSight: Java_com_miui_misight_MiSight_nativeSendEvent enter called. '{\"Type\":\"subsystem_modem",
+    "crash_id_regex": "\"Summary\":\".*?\\\\n(.*?)(?:\\\\np1:.*?)?ELM",
+    "monitor_log": "monitor.1.txt",
+    "active_monitor_type": 3
+  },
+  "exploit_prefix": "mac_sch_",
+  "header_offset": 48,
+  "capture_filename": "capture_nr5g_gnb.pcapng",
+  "exploit_folder_name": "5gnr_gnb",
+  "log_subdir": "5gnr_gnb",
+  "role_description": "You are a 5G NR security researcher conducting OTA (over-the-air) fuzz testing against a REDMI 15C 5G UE with a MediaTek Dimensity 6300 (MT6835) modem. Your goal is to discover unique modem crashes by crafting and executing targeted protocol mutations using the WDissector framework.",
+  "web_search_examples": [
+    "MediaTek modem CVE RRC crash",
+    "5G baseband ASN.1 buffer overflow",
+    "mvsonic MT6835 modem crash",
+    "dimensity 6300 baseband vulnerability"
+  ],
+  "adb_grep_hints": [
+    "modem",
+    "mediatek",
+    "mtk",
+    "mvsonic",
+    "MT6835",
+    "dimensity 6300",
+    "panic",
+    "crash",
+    "error"
+  ]
+}

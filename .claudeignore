@@ -1,0 +1,38 @@
+# Secrets
+secret_keys.py
+
+# Cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+cache/
+
+# Large binary/capture data
+data/**/*.pcap
+data/**/*.pcapng
+
+# Logs and runtime output
+logs/
+runtime_logs/
+exploratory_logs/
+sweep_logs/
+
+# Sweep scripts (temporary automation artifacts)
+sweep_scripts_202604/
+
+# Agent-generated artifacts
+agent_generated_crashes/
+agent_generated_tests/
+
+# Reports and scratchpad
+reports/
+scratchpad/
+
+# External/vendored content
+5g-papers-main/
+upstream/
+
+# Crashes data
+crashes.csv
+
+paper_writeup_data/

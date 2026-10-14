@@ -1,0 +1,8 @@
+[tool.ruff]
+line-length = 88
+indent-width = 4
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:.*Field type should not be.*:DeprecationWarning:pcapng.*",
+]

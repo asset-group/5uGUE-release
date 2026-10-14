@@ -1,0 +1,13 @@
+openai>=1.0.0
+nest-asyncio>=1.6.0
+python-pcapng>=2.1.0
+pyshark>=0.4.6,<0.5
+requests>=2.32.0
+pytest>=7.0.0
+psutil>=5.9.0
+matplotlib>=3.7.0
+fastapi>=0.110
+uvicorn[standard]>=0.27
+httpx>=0.27
+psycopg[pool,binary]>=3.1
+pydantic>=2.5
