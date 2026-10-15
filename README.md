@@ -8,7 +8,7 @@
 >
 > This repository is the open-source code artifact accompanying our paper. Its primary objective is **scientific transparency and complete open disclosure of the agentic logic, prompt designs and tool-dispatching pipelines** presented in the paper.
 >
-> **API Keys**: Proprietary LLM API keys are excluded; users must supply their own API keys in `secret_keys.py` (see [Configuration](#configuration)).
+> **API Keys**: Proprietary LLM API keys are excluded; users must supply their own API keys in `secret_keys.py` (see [Configuration](#3-configuration)).
 >
 > **Scope of this Repository**: Because live hardware-in-the-loop fuzzing inherently depends on specialized laboratory testbeds (software-defined radios, physical COTS smartphones, programmable SIM cards, and RF cabling), this code is not intended as an out-of-the-box turnkey fuzzing tool for instant execution without an equivalent physical lab setup. All core decision logic, agent loops, search strategies, and tool interactions are completely and transparently disclosed.
 
@@ -87,7 +87,7 @@ For architecture overviews, experiment example visualizations, and summary resul
 | **`v3`** | **Batched Test Execution**: Adds `execute_test_batch` allowing up to 5 concurrent test variations per turn. | ✅ | ✅ | ✅ | ✅ |
 | **`v3f`** | **Filtered Research + Coarse-to-Fine**: Knowledge-free mode with domain-restricted web research (blocks GitHub/GitLab) and structured search heuristics. | ❌ | ✅ *(Filtered)* | ❌ | ✅ |
 
-### **📝 Note**: An internal development mode (`full`) with pre-seeded datasets exists in the codebase for development purposes, but is **not used or evaluated in the paper**.
+> **Note**: An internal development mode (`full`) with pre-seeded datasets exists in the codebase for development purposes, but is **not used or evaluated in the paper**.
 
 ---
 
@@ -213,9 +213,10 @@ The live hardware-in-the-loop testbed consists of:
 ### 2. Underlying Fuzzing Frameworks
 
 5uGUE relies on underlying over-the-air base station and protocol injection stacks to transmit synthesized exploits over RF:
-- **5G NR OTA Stack**: Powered by the **5Ghoul** framework ([http://www.5ghoul.com](http://www.5ghoul.com)), utilizing OpenAirInterface (OAI) gNodeB / eNodeB stacks.
+- **5G NR OTA Stack**: Powered by the **5Ghoul** framework ([https://asset-group.github.io/disclosures/5ghoul/](https://asset-group.github.io/disclosures/5ghoul/)), utilizing OpenAirInterface (OAI) gNodeB / eNodeB stacks.
 - **Bluetooth OTA Stack**: Powered by the **Braktooth** framework ([https://asset-group.github.io/disclosures/braktooth/](https://asset-group.github.io/disclosures/braktooth/)) for baseband link manager packet injection.
 
+<a id="configuration"></a>
 ### 3. Configuration
 
 1. **Clone & Virtual Environment**:
