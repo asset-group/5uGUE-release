@@ -4,16 +4,13 @@
 
 🌐 **Project Website**: [https://5ugue.pages.dev/](https://5ugue.pages.dev/)
 
-> **Academic Artifact & Code Disclosure Notice**
+> **Code Disclosure & Testbed Scope**
 >
-> This repository is the open-source code artifact accompanying our double-blind submission. Its primary objective is **scientific transparency and complete open disclosure of the agentic logic, prompt designs and tool-dispatching pipelines** presented in the paper.
-> 
-> To preserve author anonymity and comply with responsible disclosure standards:
-> - Raw over-the-air packet capture files (`.pcapng`), proprietary testbed configurations, internal lab network IP addresses, and exploit databases have been replaced with descriptive stubs to prevent disclosing identifying author and testbed details during the review process.
-> - Physical device ADB serial numbers have been replaced with stubs (`STUB_ADB_SERIAL`).
-> - Proprietary LLM API keys are excluded; users must supply their own API keys in `secret_keys.py` (see [Configuration](#configuration)).
+> This repository is the open-source code artifact accompanying our paper. Its primary objective is **scientific transparency and complete open disclosure of the agentic logic, prompt designs and tool-dispatching pipelines** presented in the paper.
 >
-> **Scope of this Artifact**: This repository is published for peer review and architectural inspection to demonstrate that our implementation is fully open-sourced. Because live hardware-in-the-loop fuzzing inherently depends on specialized laboratory testbeds (software-defined radios, physical COTS smartphones, programmable SIM cards, and RF cabling), this code is not intended as an out-of-the-box turnkey fuzzing tool for instant execution without an equivalent physical lab setup. All core decision logic, agent loops, search strategies, and tool interactions are completely and transparently disclosed.
+> **API Keys**: Proprietary LLM API keys are excluded; users must supply their own API keys in `secret_keys.py` (see [Configuration](#configuration)).
+>
+> **Scope of this Repository**: Because live hardware-in-the-loop fuzzing inherently depends on specialized laboratory testbeds (software-defined radios, physical COTS smartphones, programmable SIM cards, and RF cabling), this code is not intended as an out-of-the-box turnkey fuzzing tool for instant execution without an equivalent physical lab setup. All core decision logic, agent loops, search strategies, and tool interactions are completely and transparently disclosed.
 
 ---
 
