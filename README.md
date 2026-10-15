@@ -1,5 +1,9 @@
 # 5uGUE: Agentic Hardware-in-the-Loop Fuzzing for 5G Devices and beyond
 
+[![Website](https://img.shields.io/badge/Website-5ugue.pages.dev-blue?style=flat-square&logo=googlechrome)](https://5ugue.pages.dev/)
+
+🌐 **Project Website**: [https://5ugue.pages.dev/](https://5ugue.pages.dev/)
+
 > **Academic Artifact & Code Disclosure Notice**
 >
 > This repository is the open-source code artifact accompanying our double-blind submission. Its primary objective is **scientific transparency and complete open disclosure of the agentic logic, prompt designs and tool-dispatching pipelines** presented in the paper.
@@ -38,6 +42,8 @@
 
 ## Overview
 
+![5uGUE: Conventional vs. LLM-Assisted vs. Agentic Fuzzing](images/intro.png)
+
 **5uGUE** is an autonomous, Large Language Model (LLM)-driven hardware-in-the-loop (HIL) fuzzing framework tailored for wireless security testing across 5G-enabled devices (such as commercial smartphones) and wireless peripherals (such as Bluetooth Classic SoCs).
 
 Unlike conventional wireless fuzzers that rely purely on stochastic byte mutations or manual grammar modeling, 5uGUE incorporates an LLM as an active fuzzing strategist. It couples multi-step semantic reasoning with tool-assisted interactions—integrating dedicated capabilities for protocol research, deep packet inspection, memory/knowledge management, C exploit compilation, and over-the-air test dispatching. 
@@ -48,6 +54,8 @@ In empirical evaluations across commercial off-the-shelf (COTS) 5G chipsets and 
 - **Crash Discovery**: 5uGUE demonstrates improved crash discovery compared to baseline wireless fuzzing approaches, identifying previously unknown and unique implementation-level crashes across commercial devices.
 - **Responsible Disclosure**: Crashes discovered by 5uGUE have been reported to and confirmed by baseband chipset vendors (including MediaTek and UNISOC).
 - **Multi-Protocol Application**: Evaluated on both 5G NR SA cellular stacks and Bluetooth Classic.
+
+For architecture overviews, experiment example visualizations, and summary results, visit the **[5uGUE Project Website](https://5ugue.pages.dev/)**.
 
 ---
 
@@ -193,10 +201,14 @@ The agent diversifies synthesized exploits across six fundamental mutation categ
 
 ### 1. Hardware & System Prerequisites
 
-- **Host Machine**: Ubuntu 20.04 LTS or 22.04 LTS (bare-metal installation recommended for USB 3.0 low-latency throughput).
-- **Software-Defined Radio (SDR)**: Ettus USRP B210 (or compatible SDR supported by OpenAirInterface) connected via USB 3.0.
-- **Target Devices**:
-  - Commercial off-the-shelf 5G NR SA smartphones or modems (MediaTek Dimensity, Unisoc UD710).
+![5uGUE Physical Hardware Setup](images/physical-setup.png)
+
+The live hardware-in-the-loop testbed consists of:
+- **1. Software-Defined Radio (SDR)**: Ettus USRP B210 (or compatible SDR supported by OpenAirInterface) connected via USB 3.0, acting as the base station radio.
+- **2. Host Machine / Mini PC**: Running Ubuntu 20.04 LTS or 22.04 LTS (bare-metal installation recommended for USB 3.0 low-latency throughput) hosting the rogue base station and the 5uGUE agent.
+- **3. RF Shield Box**: RF-isolated enclosure to keep over-the-air test signals contained and prevent outside radio interference.
+- **4. Target Devices**:
+  - Commercial off-the-shelf (COTS) 5G NR SA smartphones or modems (e.g., MediaTek Dimensity, UNISOC UD710) placed inside the RF shield box.
   - Programmable SIM card configured with testbed PLMN parameters (e.g. `001/01`).
   - For Bluetooth targets: ESP32 development board connected via USB-UART serial.
 - **System Tools**: Python 3.10+, ADB (Android Debug Bridge), Wireshark / TShark.
@@ -303,6 +315,7 @@ python3 run_agent.py \
 
 5uGUE builds upon and acknowledges the invaluable contributions of the following open-source frameworks, tools, and research:
 
+- **5uGUE Project Website**: Architecture overviews, experiment example visualizations, and summary results ([https://5ugue.pages.dev/](https://5ugue.pages.dev/)).
 - **Wireshark & TShark**: Packet dissection, protocol dissectors, and capture analysis ([https://www.wireshark.org/](https://www.wireshark.org/)).
 - **Braktooth**: *Braktooth: Causing Havoc on Bluetooth SoC Architectures* (Matheus E. Garbelini, Sudipta Chattopadhyay, Chundong Wang, Senthil Kumar, **USENIX Security 2022**, [Presentation Link](https://www.usenix.org/conference/usenixsecurity22/presentation/garbelini), [Project Website](https://asset-group.github.io/disclosures/braktooth/)).
 - **5Ghoul**: *5Ghoul: Over-the-Air Attacks on 5G NR Commercial Device Implementations* (Matheus E. Garbelini, Sudipta Chattopadhyay, **IEEE Transactions on Dependable and Secure Computing (TDSC)**, [IEEE Document](https://ieeexplore.ieee.org/document/11045988/), [Project Website](https://asset-group.github.io/disclosures/5ghoul/)).
