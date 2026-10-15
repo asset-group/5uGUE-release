@@ -87,7 +87,7 @@ For architecture overviews, experiment example visualizations, and summary resul
 | **`v3`** | **Batched Test Execution**: Adds `execute_test_batch` allowing up to five (5) concurrent test variations per turn. | ✅ | ✅ | ✅ | ✅ |
 | **`v3f`** | **Filtered Research + Coarse-to-Fine**: Knowledge-free mode with domain-restricted web research (blocks GitHub/GitLab) and structured search heuristics. | ❌ | ✅ *(Filtered)* | ❌ | ✅ |
 
-> **Note**: An internal development mode (`full`) with pre-seeded datasets exists in the codebase for development purposes, but is **not used or evaluated in the paper**.
+> **Note**: An internal development mode (`full`) with pre-seeded datasets exists in the codebase for development purposes, but it is **not used or evaluated in the paper**.
 
 ---
 
