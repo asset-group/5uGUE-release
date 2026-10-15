@@ -84,7 +84,7 @@ For architecture overviews, experiment example visualizations, and summary resul
 | :--- | :--- | :---: | :---: | :---: | :---: |
 | **`v1`** | **Literature & Web**: Adds paper retrieval (`query_papers`, `read_paper`) and basic web search (`web_search`, `fetch_url`). | ✅ | ✅ | ❌ | ❌ |
 | **`v2`** | **GitHub-Aware Retrieval**: Extends research with GitHub intelligence (blob $\to$ raw, tree $\to$ API) and crash reproduction workflows. | ✅ | ✅ | ✅ | ❌ |
-| **`v3`** | **Batched Test Execution**: Adds `execute_test_batch` allowing up to 5 concurrent test variations per turn. | ✅ | ✅ | ✅ | ✅ |
+| **`v3`** | **Batched Test Execution**: Adds `execute_test_batch` allowing up to five (5) concurrent test variations per turn. | ✅ | ✅ | ✅ | ✅ |
 | **`v3f`** | **Filtered Research + Coarse-to-Fine**: Knowledge-free mode with domain-restricted web research (blocks GitHub/GitLab) and structured search heuristics. | ❌ | ✅ *(Filtered)* | ❌ | ✅ |
 
 > **Note**: An internal development mode (`full`) with pre-seeded datasets exists in the codebase for development purposes, but is **not used or evaluated in the paper**.
