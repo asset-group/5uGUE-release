@@ -34,6 +34,7 @@
   - [Running 5G NR Fuzzing Experiments](#running-5g-nr-fuzzing-experiments)
   - [Running Bluetooth Fuzzing Experiments](#running-bluetooth-fuzzing-experiments)
 - [Acknowledgements & Citations](#acknowledgements--citations)
+- [Contact](#contact)
 
 ---
 
@@ -318,3 +319,10 @@ python3 run_agent.py \
 - **Braktooth**: *Braktooth: Causing Havoc on Bluetooth SoC Architectures* (Matheus E. Garbelini, Sudipta Chattopadhyay, Chundong Wang, Senthil Kumar, **USENIX Security 2022**, [Presentation Link](https://www.usenix.org/conference/usenixsecurity22/presentation/garbelini), [Project Website](https://asset-group.github.io/disclosures/braktooth/)).
 - **5Ghoul**: *5Ghoul: Over-the-Air Attacks on 5G NR Commercial Device Implementations* (Matheus E. Garbelini, Sudipta Chattopadhyay, **IEEE Transactions on Dependable and Secure Computing (TDSC)**, [IEEE Document](https://ieeexplore.ieee.org/document/11045988/), [Project Website](https://asset-group.github.io/disclosures/5ghoul/)).
 - **OpenAirInterface (OAI)**: Open-source software stack for 5G NR base station simulation and over-the-air transmission ([https://openairinterface.org/](https://openairinterface.org/)).
+
+
+## Contact
+
+For any questions / comments please email guoqiang.hua@ntu.edu.sg.
+
+
