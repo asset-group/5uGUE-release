@@ -13,7 +13,7 @@
 > **Scope of this Repository**: Because live hardware-in-the-loop fuzzing inherently depends on specialized laboratory testbeds (software-defined radios, physical COTS smartphones, programmable SIM cards, and RF cabling), this code is not intended as an out-of-the-box turnkey fuzzing tool for instant execution without an equivalent physical lab setup. All core decision logic, agent loops, search strategies, and tool interactions are completely and transparently disclosed.
 
 > [!IMPORTANT]
-> **As of today, 5uGUE has uncovered 46 unique, reproducible crashes (all leading to denial-of-service attacks) across various MediaTek and Unisoc baseband modems, 44 of which were confirmed by the vendors but had been previously reported. Additionally, MediaTek confirmed two previously unknown, high-severity vulnerabilities, one of which is assigned CVE-2026-20525**.
+> **As of today, 5uGUE has uncovered 46 unique, reproducible crashes (all leading to denial-of-service attacks) across various MediaTek and Unisoc baseband modems, all of which are confirmed by the respective vendors. 44 of the reported crashes were previously known by the vendors. Additionally, MediaTek confirmed two previously unknown, high-severity vulnerabilities, one of which is already assigned CVE-2026-20525 and the other is pending**.
 
 ---
 
