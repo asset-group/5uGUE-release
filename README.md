@@ -1,8 +1,13 @@
 # 5uGUE: Agentic Hardware-in-the-Loop Fuzzing for 5G Devices and beyond
 
-[![Website](https://img.shields.io/badge/Website-5ugue.pages.dev-blue?style=flat-square&logo=googlechrome)](https://5ugue.pages.dev/)
+🌐 **Project Website**: [https://5ugue.pages.dev](https://5ugue.pages.dev)
 
-🌐 **Project Website**: [https://5ugue.pages.dev/](https://5ugue.pages.dev/)
+🎥 **Demo Video**: [https://youtu.be/ijaUs4eXJm4](https://youtu.be/ijaUs4eXJm4)
+
+
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ijaUs4eXJm4/maxresdefault.jpg)](https://youtu.be/ijaUs4eXJm4)
+
 
 > **Code Disclosure & Testbed Scope**
 >
